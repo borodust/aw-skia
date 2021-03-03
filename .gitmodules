@@ -1,0 +1,3 @@
+[submodule "src/lib/skia"]
+	path = src/lib/skia
+	url = https://github.com/borodust/skia.git
