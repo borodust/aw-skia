@@ -33,14 +33,14 @@ add_library(${TARGET} SHARED ${ADAPTER})
 set_source_files_properties(${ADAPTER} PROPERTIES LANGUAGE CXX)
 
 target_include_directories(${TARGET}
-  PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../"
+  PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../"
           "${LIBRARY_DIR}/"
           "${LIBRARY_DIR}/include/")
 
 target_link_directories(${TARGET}
-  PRIVATE ${LIBRARY_DIR}/out/Static/)
+  PUBLIC ${LIBRARY_DIR}/out/Clawed)
 
 
 target_link_options(${TARGET} PUBLIC "LINKER:")
 
-target_link_libraries(${TARGET} PRIVATE skia)
+target_link_libraries(${TARGET} PUBLIC skia)
