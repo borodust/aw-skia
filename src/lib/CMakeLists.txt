@@ -4,6 +4,9 @@ project(skia.clawed)
 set(LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/skia)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_LINK_WHAT_YOU_USE ON)
+SET(CMAKE_SKIP_BUILD_RPATH FALSE)
+SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+SET(CMAKE_INSTALL_RPATH "$\{ORIGIN\}")
 
 if (MSVC)
     add_compile_options(/O2)
@@ -39,7 +42,6 @@ target_include_directories(${TARGET}
 
 target_link_directories(${TARGET}
   PUBLIC ${LIBRARY_DIR}/out/Clawed)
-
 
 target_link_options(${TARGET} PUBLIC "LINKER:")
 

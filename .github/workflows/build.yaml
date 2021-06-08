@@ -1,0 +1,37 @@
+name: Build
+on:
+  push:
+    tags:
+      - "v*.*.*"
+jobs:
+  Build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Check Out Everything
+        id: checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Cache Skia's Third Party
+        uses: actions/cache@v2
+        with:
+          key: "${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('src/lib/skia/DEPS') }}"
+          path: |
+            ${{ github.workspace }}/src/lib/skia/thrid_party/
+      - name: Install LLVM And Clang
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "9.0"
+      - name: Install Required Packages
+        run: sudo apt-get install -y ninja-build libgl1-mesa-dev libgl1-mesa-glx
+      - name: Build Binaries
+        run: |
+          cd ${{ github.workspace }}/src/lib/ && ./build.sh desktop
+      - name: Publish Binaries
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: |
+            src/lib/build/desktop/libskia.clawed.so
+            src/lib/build/desktop/libskia.so

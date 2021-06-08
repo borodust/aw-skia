@@ -65,6 +65,7 @@ function build_desktop {
           -DCMAKE_CXX_COMPILER=$CXX \
           $WORK_DIR
     cmake --build .
+    cp $LIBRARY_DIR/out/Clawed/libskia.so $BUILD_DIR/
 }
 
 cd $LIBRARY_DIR
