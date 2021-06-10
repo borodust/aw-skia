@@ -71,6 +71,7 @@
   :recognize-bitfields t
   :recognize-strings t
   :ignore-entities (ignore-uninstantiable)
+  :use-float-features t
   :with-adapter (:static
                  :path "lib/adapter.cxx")
   :override-types ((:string claw-utils:claw-string)
