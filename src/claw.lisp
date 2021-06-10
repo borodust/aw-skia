@@ -1,7 +1,7 @@
 (cl:in-package :skia)
 
-(claw.wrapper:defwrapper (:claw-skia
-                          (:system :claw-skia/wrapper)
+(claw.wrapper:defwrapper (:aw-skia
+                          (:system :aw-skia/wrapper)
                           (:defines "SK_GL" 1)
                           (:headers "core/SkCanvas.h"
                                     "core/SkFont.h"
@@ -28,8 +28,8 @@
                           (:includes :skia-includes :skia-root-includes)
                           (:targets ((:and :x86-64 :linux) "x86_64-pc-linux-gnu")
                                     ((:and :aarch64 :android) "aarch64-linux-android"))
-                          (:persistent :claw-skia-bindings
-                           :asd-path "../claw-skia-bindings.asd"
+                          (:persistent :aw-skia-bindings
+                           :asd-path "../aw-skia-bindings.asd"
                            :bindings-path "../bindings/"
                            :depends-on (:claw-utils))
                           (:language :c++)

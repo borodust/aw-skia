@@ -1,13 +1,13 @@
-(asdf:defsystem :claw-skia
+(asdf:defsystem :aw-skia
   :description "Bindings to Skia"
   :version "1.0.0"
   :author "Pavel Korolev"
   :mailto "dev@borodust.org"
   :license "MIT"
-  :depends-on (:claw-skia-bindings))
+  :depends-on (:aw-skia-bindings))
 
 
-(asdf:defsystem :claw-skia/wrapper
+(asdf:defsystem :aw-skia/wrapper
   :description "Wrapper generator for Skia"
   :version "1.0.0"
   :author "Pavel Korolev"
