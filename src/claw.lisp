@@ -46,11 +46,8 @@
                                             "gpu/GrDirectContext.h"
                                             "gpu/gl/GrGLInterface.h"
                                             "gpu/gl/GrGLTypes.h")
-                          (:include-definitions "^sk_sp<.*>"
+                          (:include-definitions "^sk_sp"
                                                 "^SK_" "^GR_")
-                          (:exclude-sources "private/"
-                                            "core/SkStream.h"
-                                            "core/SkString.h")
                           (:exclude-definitions "__va_list_tag"
                                                 "SkFunctionWrapper"
                                                 "SkWStream"
@@ -59,13 +56,12 @@
                                                 "GrGLFunction"
                                                 "Mock"
                                                 "unique_ptr"
-                                                "function<"
                                                 "::priv$"
                                                 "array.*::"
                                                 "sk_sp.*::element_type"
-                                                "sk_sp<.*Impl>"
                                                 "^Sk.*_DEFINED"
-                                                "^Gr.*_DEFINED"))
+                                                "^Gr.*_DEFINED"
+                                                "::_"))
   :in-package :%skia
   :trim-enum-prefix t
   :recognize-bitfields t
