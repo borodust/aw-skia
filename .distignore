@@ -1,0 +1,3 @@
+/\..*           # any file or directory starting with a dot
+^/src/lib/      # non-lisp stuff
+^/local/        # local project stuff
