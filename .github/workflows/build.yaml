@@ -12,21 +12,33 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
+      - run: echo "LLVM_INSTALL_PREFIX=${{ github.workspace }}/llvm" >> $GITHUB_ENV
+      - name: Cache LLVM and Clang
+        id: cache-llvm
+        uses: actions/cache@v2
+        with:
+          path: |
+            ${{ env.LLVM_INSTALL_PREFIX }}
+          key: llvm-9.0
+      - name: Install LLVM And Clang
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "9.0"
+          directory: ${{ env.LLVM_INSTALL_PREFIX }}
+          cached: ${{ steps.cache-llvm.outputs.cache-hit }}
       - name: Cache Skia's Third Party
         uses: actions/cache@v2
         with:
           key: "${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('src/lib/skia/DEPS') }}"
           path: |
             ${{ github.workspace }}/src/lib/skia/thrid_party/
-      - name: Install LLVM And Clang
-        uses: KyleMayes/install-llvm-action@v1
-        with:
-          version: "9.0"
       - name: Install Required Packages
-        run: sudo apt-get install -y ninja-build libgl1-mesa-dev libgl1-mesa-glx
+        run: sudo apt-get update && sudo apt-get install -y ninja-build libgl1-mesa-dev libgl1-mesa-glx patchelf
       - name: Build Binaries
         run: |
           cd ${{ github.workspace }}/src/lib/ && ./build.sh desktop
+      - name: Set libskia RPATH
+        run: patchelf --set-rpath '${ORIGIN}' src/lib/build/desktop/libskia.so
       - name: Publish Binaries
         uses: softprops/action-gh-release@v1
         env:

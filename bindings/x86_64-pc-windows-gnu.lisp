@@ -47,19 +47,19 @@
 
 (defparameter %skia::+sk-max-s32+ 2147483647)
 
-(defparameter %skia::+sk-max-s64+ 9223372036854775807)
+(defparameter %skia::+sk-max-s64+ -1)
 
 (defparameter %skia::+sk-min-s16+ -32767)
 
 (defparameter %skia::+sk-min-s32+ -2147483647)
 
-(defparameter %skia::+sk-min-s64+ -9223372036854775807)
+(defparameter %skia::+sk-min-s64+ 1)
 
 (defparameter %skia::+sk-na-n32+ -2147483648)
 
 (defparameter %skia::+gr-cache-stats+ 1)
 
-(defparameter %skia::+gr-file-and-line-str+ "/tmp/tmpKBQK5JQ8-tmp.h(47) : ")
+(defparameter %skia::+gr-file-and-line-str+ "/tmp/tmp5F8RUDP8-tmp.h(47) : ")
 
 (defparameter %skia::+gr-gl-check-error+ 1)
 
@@ -83,11 +83,11 @@
 
 (defparameter %skia::+sk-api+ nil)
 
-(defparameter %skia::+sk-b32-shift+ 16)
+(defparameter %skia::+sk-b32-shift+ 0)
 
 (defparameter %skia::+sk-begin-require-dense+ nil)
 
-(defparameter %skia::+sk-build-for-unix+ nil)
+(defparameter %skia::+sk-build-for-win+ nil)
 
 (defparameter %skia::+sk-cpu-lendian+ nil)
 
@@ -115,7 +115,7 @@
 
 (defparameter %skia::+sk-debug+ nil)
 
-(defparameter %skia::+sk-dump-line-format+ "%s:%d")
+(defparameter %skia::+sk-dump-line-format+ "%s(%d)")
 
 (defparameter %skia::+sk-double-na-n+ (float-features:bits-double-float
                                        9221120237041090560))
@@ -171,11 +171,11 @@
 
 (defparameter %skia::+sk-max-s32fits-in-float+ 2147483520)
 
-(defparameter %skia::+sk-max-s64fits-in-float+ 9223371487098961920)
+(defparameter %skia::+sk-max-s64fits-in-float+ -2147483648)
 
 (defparameter %skia::+sk-min-s32fits-in-float+ -2147483520)
 
-(defparameter %skia::+sk-min-s64fits-in-float+ -9223371487098961920)
+(defparameter %skia::+sk-min-s64fits-in-float+ -2147483648)
 
 (defparameter %skia::+sk-never-inline+ nil)
 
@@ -185,7 +185,7 @@
 
 (defparameter %skia::+sk-potentially-blocking-region-end+ nil)
 
-(defparameter %skia::+sk-r32-shift+ 0)
+(defparameter %skia::+sk-r32-shift+ 16)
 
 (defparameter %skia::+sk-restrict+ nil)
 
@@ -441,7 +441,7 @@
                (:r16g16b16a16-unorm-sk-color-type 20)
                (:srgba-8888-sk-color-type 21)
                (:last-enum-sk-color-type 21)
-               (:n32-sk-color-type 4))
+               (:n32-sk-color-type 6))
 
 (cffi:defcenum (%skia::sk-filter-mode :int)
                "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/core/SkSamplingOptions.h:14:12"
@@ -1935,10 +1935,10 @@
                %skia::gr-gpu-finished-context))
 
 (iffi:defitype %skia::size-t
-               :unsigned-long
+               :unsigned-long-long
                "/usr/lib/clang/12.0.1/include/stddef.h:46:23")
 
-(iffi:defifun ("__claw__ZN15GrDirectContext30createCompressedBackendTextureEiiN7SkImage15CompressionTypeEPKvm11GrMipmapped11GrProtectedPFvPvES6_"
+(iffi:defifun ("__claw__ZN15GrDirectContext30createCompressedBackendTextureEiiN7SkImage15CompressionTypeEPKvy11GrMipmapped11GrProtectedPFvPvES6_"
                %skia::create-compressed-backend-texture)
               (claw-utils:claw-pointer %skia::gr-backend-texture)
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/GrDirectContext.h:687:22"
@@ -1977,7 +1977,7 @@
               (%skia::finished-context
                %skia::gr-gpu-finished-context))
 
-(iffi:defifun ("__claw__ZN15GrDirectContext30createCompressedBackendTextureEiiRK15GrBackendFormatPKvm11GrMipmapped11GrProtectedPFvPvES7_"
+(iffi:defifun ("__claw__ZN15GrDirectContext30createCompressedBackendTextureEiiRK15GrBackendFormatPKvy11GrMipmapped11GrProtectedPFvPvES7_"
                %skia::create-compressed-backend-texture)
               (claw-utils:claw-pointer %skia::gr-backend-texture)
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/GrDirectContext.h:679:22"
@@ -2084,7 +2084,7 @@
               (%skia::%%claw-this-
                (claw-utils:claw-pointer %skia::gr-direct-context)))
 
-(iffi:defifun ("__claw__ZNK15GrDirectContext22getResourceCacheLimitsEPiPm"
+(iffi:defifun ("__claw__ZNK15GrDirectContext22getResourceCacheLimitsEPiPy"
                %skia::get-resource-cache-limits :non-mutating t)
               :void
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/GrDirectContext.h:205:10"
@@ -2102,7 +2102,7 @@
               (%skia::%%claw-this-
                (claw-utils:claw-pointer %skia::gr-direct-context)))
 
-(iffi:defifun ("__claw__ZNK15GrDirectContext21getResourceCacheUsageEPiPm"
+(iffi:defifun ("__claw__ZNK15GrDirectContext21getResourceCacheUsageEPiPy"
                %skia::get-resource-cache-usage :non-mutating t)
               :void
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/GrDirectContext.h:220:10"
@@ -2140,7 +2140,7 @@
                (claw-utils:claw-pointer %skia::gr-direct-context))
               (%skia::scratch-resources-only :bool))
 
-(iffi:defifun ("__claw__ZN15GrDirectContext22purgeUnlockedResourcesEmb"
+(iffi:defifun ("__claw__ZN15GrDirectContext22purgeUnlockedResourcesEyb"
                %skia::purge-unlocked-resources)
               :void
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/GrDirectContext.h:262:10"
@@ -2208,7 +2208,7 @@
               (%skia::finished-context
                %skia::gr-gpu-finished-context))
 
-(iffi:defifun ("__claw__ZN15GrDirectContext21setResourceCacheLimitEm"
+(iffi:defifun ("__claw__ZN15GrDirectContext21setResourceCacheLimitEy"
                %skia::set-resource-cache-limit)
               :void
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/GrDirectContext.h:244:10"
@@ -2216,7 +2216,7 @@
                (claw-utils:claw-pointer %skia::gr-direct-context))
               (%skia::max-resource-bytes %skia::size-t))
 
-(iffi:defifun ("__claw__ZN15GrDirectContext22setResourceCacheLimitsEim"
+(iffi:defifun ("__claw__ZN15GrDirectContext22setResourceCacheLimitsEiy"
                %skia::set-resource-cache-limits)
               :void
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/GrDirectContext.h:235:10"
@@ -2335,7 +2335,7 @@
               (%skia::finished-context
                %skia::gr-gpu-finished-context))
 
-(iffi:defifun ("__claw__ZN15GrDirectContext30updateCompressedBackendTextureERK16GrBackendTexturePKvmPFvPvES5_"
+(iffi:defifun ("__claw__ZN15GrDirectContext30updateCompressedBackendTextureERK16GrBackendTexturePKvyPFvPvES5_"
                %skia::update-compressed-backend-texture)
               :bool
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/GrDirectContext.h:722:10"
@@ -2848,7 +2848,7 @@
                   "__claw_get_SkIPoint_fY" :documentation
                   "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/core/SkPoint.h:27:13"))
 
-(iffi:defifun ("__claw__ZN8SkCanvas20accessTopLayerPixelsEP11SkImageInfoPmP8SkIPoint"
+(iffi:defifun ("__claw__ZN8SkCanvas20accessTopLayerPixelsEP11SkImageInfoPyP8SkIPoint"
                %skia::access-top-layer-pixels)
               (claw-utils:claw-pointer :void)
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/core/SkCanvas.h:318:11"
@@ -3752,7 +3752,7 @@
               (%skia::paint
                (claw-utils:claw-pointer %skia::sk-paint)))
 
-(iffi:defifun ("__claw__ZN8SkCanvas10drawPointsENS_9PointModeEmPK7SkPointRK7SkPaint"
+(iffi:defifun ("__claw__ZN8SkCanvas10drawPointsENS_9PointModeEyPK7SkPointRK7SkPaint"
                %skia::draw-points)
               :void
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/core/SkCanvas.h:1203:10"
@@ -3808,7 +3808,7 @@
               (%skia::paint
                (claw-utils:claw-pointer %skia::sk-paint)))
 
-(iffi:defifun ("__claw__ZN8SkCanvas14drawSimpleTextEPKvm14SkTextEncodingffRK6SkFontRK7SkPaint"
+(iffi:defifun ("__claw__ZN8SkCanvas14drawSimpleTextEPKvy14SkTextEncodingffRK6SkFontRK7SkPaint"
                %skia::draw-simple-text)
               :void
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/core/SkCanvas.h:1680:10"
@@ -4288,7 +4288,7 @@
               (%skia::src-x :int)
               (%skia::src-y :int))
 
-(iffi:defifun ("__claw__ZN8SkCanvas10readPixelsERK11SkImageInfoPvmii"
+(iffi:defifun ("__claw__ZN8SkCanvas10readPixelsERK11SkImageInfoPvyii"
                %skia::read-pixels)
               :bool
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/core/SkCanvas.h:384:10"
@@ -4511,7 +4511,7 @@
               (%skia::x :int)
               (%skia::y :int))
 
-(iffi:defifun ("__claw__ZN8SkCanvas11writePixelsERK11SkImageInfoPKvmii"
+(iffi:defifun ("__claw__ZN8SkCanvas11writePixelsERK11SkImageInfoPKvyii"
                %skia::write-pixels)
               :bool
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/core/SkCanvas.h:497:10"
@@ -7326,7 +7326,7 @@
               (%skia::props
                (claw-utils:claw-pointer %skia::sk-surface-props)))
 
-(iffi:defifun ("__claw__ZN9SkSurface10MakeRasterERK11SkImageInfomPK14SkSurfaceProps"
+(iffi:defifun ("__claw__ZN9SkSurface10MakeRasterERK11SkImageInfoyPK14SkSurfaceProps"
                %skia::sk-surface+make-raster)
               (claw-utils:claw-pointer %skia::sk-sp<sk-surface>)
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/core/SkSurface.h:128:29"
@@ -7338,7 +7338,7 @@
               (%skia::surface-props
                (claw-utils:claw-pointer %skia::sk-surface-props)))
 
-(iffi:defifun ("__claw__ZN9SkSurface16MakeRasterDirectERK11SkImageInfoPvmPK14SkSurfaceProps"
+(iffi:defifun ("__claw__ZN9SkSurface16MakeRasterDirectERK11SkImageInfoPvyPK14SkSurfaceProps"
                %skia::sk-surface+make-raster-direct)
               (claw-utils:claw-pointer %skia::sk-sp<sk-surface>)
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/core/SkSurface.h:70:29"
@@ -7361,7 +7361,7 @@
               (%skia::props
                (claw-utils:claw-pointer %skia::sk-surface-props)))
 
-(iffi:defifun ("__claw__ZN9SkSurface27MakeRasterDirectReleaseProcERK11SkImageInfoPvmPFvS3_S3_ES3_PK14SkSurfaceProps"
+(iffi:defifun ("__claw__ZN9SkSurface27MakeRasterDirectReleaseProcERK11SkImageInfoPvyPFvS3_S3_ES3_PK14SkSurfaceProps"
                %skia::sk-surface+make-raster-direct-release-proc)
               (claw-utils:claw-pointer %skia::sk-sp<sk-surface>)
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/core/SkSurface.h:103:29"
@@ -7689,7 +7689,7 @@
               (%skia::src-x :int)
               (%skia::src-y :int))
 
-(iffi:defifun ("__claw__ZN9SkSurface10readPixelsERK11SkImageInfoPvmii"
+(iffi:defifun ("__claw__ZN9SkSurface10readPixelsERK11SkImageInfoPvyii"
                %skia::read-pixels)
               :bool
               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/core/SkSurface.h:709:10"
@@ -8845,10 +8845,6 @@
                  nil
                  "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/core/SkColor.h:260:8")
 
-(iffi:defitype %skia::int16-t
-               :short
-               "/usr/include/bits/stdint-intn.h:25:19")
-
 (iffi:defitype %skia::gr-gl-func-ptr
                (claw-utils:claw-pointer :void)
                "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/gl/GrGLInterface.h:17:15")
@@ -8934,8 +8930,8 @@
                "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/gl/GrGLTypes.h:108:17")
 
 (iffi:defitype %skia::gr-g-lintptr
-               :long
-               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/gl/GrGLTypes.h:123:25")
+               :long-long
+               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/gl/GrGLTypes.h:120:30")
 
 (iffi:defitype %skia::gr-g-lshort
                :short
@@ -8946,8 +8942,8 @@
                "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/gl/GrGLTypes.h:107:13")
 
 (iffi:defitype %skia::gr-g-lsizeiptr
-               :long
-               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/gl/GrGLTypes.h:124:25")
+               :long-long
+               "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/gl/GrGLTypes.h:121:30")
 
 (iffi:defitype %skia::gr-g-lsync
                (claw-utils:claw-pointer %skia::%%g-lsync)
@@ -9026,6 +9022,10 @@
 (iffi:defitype %skia::sk-m-sec
                :unsigned-int
                "/home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/core/SkTypes.h:581:18")
+
+(iffi:defitype %skia::int16-t
+               :short
+               "/usr/include/bits/stdint-intn.h:25:19")
 
 (defparameter %skia::+sk-colors+k-black+ nil)
 
@@ -9278,6 +9278,7 @@
   (export '%skia::make-sorted :%skia)
   (export '%skia::draw-i-rect :%skia)
   (export '%skia::as-blend-mode :%skia)
+  (export '%skia::+sk-build-for-win+ :%skia)
   (export '%skia::sk-sp<sk-id-change-listener> :%skia)
   (export '%skia::sk-draw-shadow-rec :%skia)
   (export '%skia::sk-sp<gr-direct-context> :%skia)
@@ -9621,7 +9622,7 @@
   (export '%skia::sk-sampling-options :%skia)
   (export '%skia::gr-swizzle :%skia)
   (export '%skia::is-same-texture :%skia)
-  (export '%skia::+sk-build-for-unix+ :%skia)
+  (export '%skia::stencil-bits :%skia)
   (export '%skia::set-image-filter :%skia)
   (export '%skia::gr-strike-cache :%skia)
   (export '%skia::sk-matrix+type-mask :%skia)
@@ -9630,7 +9631,7 @@
   (export '%skia::get-alphaf :%skia)
   (export '%skia::sk-raster-handle-allocator+handle :%skia)
   (export '%skia::+sk-scoped-capability+ :%skia)
-  (export '%skia::stencil-bits :%skia)
+  (export '%skia::gr-g-lboolean :%skia)
   (export '%skia::discard :%skia)
   (export '%skia::sk-rect+make-size :%skia)
   (export '%skia::gr-flush-info :%skia)
@@ -9694,7 +9695,6 @@
   (export '%skia::+sk-potentially-blocking-region-begin+ :%skia)
   (export '%skia::sk-vector :%skia)
   (export '%skia::+sk-color-gray+ :%skia)
-  (export '%skia::gr-g-lboolean :%skia)
   (export '%skia::sk-sp<sk-pixel-ref> :%skia)
   (export '%skia::sk-font+priv-flags :%skia)
   (export '%skia::std+array<float+4> :%skia)

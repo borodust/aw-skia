@@ -8,7 +8,8 @@
     ;; these are mostly screwed by being forward declared
     (claw.resect:ignore-every
       (claw.resect:ignore-names
-        "sk_sp<.*>")
+        "sk_sp<.*>"
+        "GrGLInterface::.*")
       (claw.resect:ignore-not
        (claw.resect:ignore-names
          "sk_sp<SkColorSpace>"
@@ -31,6 +32,7 @@
                  ("toSkColor" :any)
                  ("toBytes_RGBA" :any)
                  ("FromBytes_RGBA" :any))
-
+      (:in-class "GrBackendFormat"
+                 ("toStr"))
       (:in-class "SkCanvas"
                  (:ctor :any)))))

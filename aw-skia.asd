@@ -14,9 +14,8 @@
   :mailto "dev@borodust.org"
   :license "MIT"
   :depends-on (:alexandria :cffi :cffi-c-ref :claw :claw-utils)
-  :pathname "src/"
   :serial t
-  :components ((:file "utils")
-               (:file "claw")
-               (:module :skia-includes :pathname "lib/skia/include/")
-               (:module :skia-root-includes :pathname "lib/skia/")))
+  :components ((:file "src/utils")
+               (:file "src/claw")
+               (:module :skia-includes :pathname "src/lib/skia/include/")
+               (:module :skia-root-includes :pathname "src/lib/skia/")))
