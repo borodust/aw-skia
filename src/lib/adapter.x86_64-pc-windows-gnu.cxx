@@ -2461,12 +2461,6 @@ __CLAW_API unsigned long long __claw_alignof_sk_sp_SkData_() {
 return alignof(sk_sp<SkData>);
 }
 
-__CLAW_API GrDirectContext::DirectContextID* __claw__ZN15GrDirectContext15DirectContextID4NextEv(GrDirectContext::DirectContextID* __claw_result_) {
-// /home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/gpu/GrDirectContext.h:785:49
-new (__claw_result_) GrDirectContext::DirectContextID(GrDirectContext::DirectContextID::Next());
-return __claw_result_;
-}
-
 __CLAW_API int32_t __claw__ZNK7SkIRect4leftEv(struct SkIRect* __claw_this_) {
 // /home/borodust/devel/repo/aw-projects/aw-skia/src/lib/skia/include/core/SkRect.h:111:13
 return __claw_this_->left();

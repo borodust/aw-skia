@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.20)
 project(skia.clawed)
 
 set(LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/skia)
@@ -9,9 +9,10 @@ set(CMAKE_LINK_WHAT_YOU_USE ON)
 set(CMAKE_SKIP_BUILD_RPATH FALSE)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 set(CMAKE_INSTALL_RPATH "$\{ORIGIN\}")
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
 
 if (MSVC)
-    add_compile_options(/O2)
+    set(TARGET_TRIPLE x86_64-pc-windows-gnu)
     if (NOT ANDROID_ABI)
       add_compile_options(/arch:AVX)
     endif()
@@ -45,6 +46,12 @@ target_include_directories(${TARGET}
 target_link_directories(${TARGET}
   PUBLIC ${LIBRARY_DIR}/out/Clawed)
 
+message("HMM: ${LIBRARY_DIR}/out/Clawed")
+
 target_link_options(${TARGET} PUBLIC "LINKER:")
 
-target_link_libraries(${TARGET} PUBLIC skia)
+if(WIN32)
+  target_link_libraries(${TARGET} PUBLIC skia.dll.lib)
+else()
+  target_link_libraries(${TARGET} PUBLIC skia)
+endif()

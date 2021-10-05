@@ -53,6 +53,7 @@
                                                 "SkBaseDevice"
                                                 "GrContextThreadSafeProxy"
                                                 "GrGLFunction"
+                                                "GrDirectContext::DirectContextID::Next"
                                                 "Mock"
                                                 "unique_ptr"
                                                 "::priv$"
