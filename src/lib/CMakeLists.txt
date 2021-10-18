@@ -9,10 +9,10 @@ set(CMAKE_LINK_WHAT_YOU_USE ON)
 set(CMAKE_SKIP_BUILD_RPATH FALSE)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 set(CMAKE_INSTALL_RPATH "$\{ORIGIN\}")
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
-if (MSVC)
-    set(TARGET_TRIPLE x86_64-pc-windows-gnu)
+if (WIN32)
+    set(TARGET_TRIPLE x86_64-w64-mingw32)
     if (NOT ANDROID_ABI)
       add_compile_options(/arch:AVX)
     endif()
@@ -28,6 +28,15 @@ else()
 endif()
 
 
+find_package(OpenGL REQUIRED)
+
+if (OPENGL_FOUND)
+    message("OpenGL found: ${OPENGL_LIBRARIES}")
+else ()
+    message(ERROR "OpenGL not found")
+endif()
+
+
 #
 # MAIN
 #
@@ -39,19 +48,15 @@ add_library(${TARGET} SHARED ${ADAPTER})
 set_source_files_properties(${ADAPTER} PROPERTIES LANGUAGE CXX)
 
 target_include_directories(${TARGET}
-  PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../"
+  PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../"
           "${LIBRARY_DIR}/"
           "${LIBRARY_DIR}/include/")
 
 target_link_directories(${TARGET}
-  PUBLIC ${LIBRARY_DIR}/out/Clawed)
-
-message("HMM: ${LIBRARY_DIR}/out/Clawed")
-
-target_link_options(${TARGET} PUBLIC "LINKER:")
+  PRIVATE ${LIBRARY_DIR}/out/Clawed)
 
 if(WIN32)
-  target_link_libraries(${TARGET} PUBLIC skia.dll.lib)
+  target_link_libraries(${TARGET} PRIVATE skia.lib OpenGL::GL)
 else()
-  target_link_libraries(${TARGET} PUBLIC skia)
+  target_link_libraries(${TARGET} PRIVATE skia OpenGL::GL OpenGL::GLX)
 endif()

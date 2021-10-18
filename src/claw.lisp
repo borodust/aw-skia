@@ -7,6 +7,7 @@
                                     "core/SkFont.h"
                                     "core/SkSurface.h"
                                     "core/SkRect.h"
+                                    "core/SkRegion.h"
                                     "core/SkPaint.h"
                                     "core/SkPoint.h"
 
@@ -29,17 +30,10 @@
                           (:includes :skia-includes :skia-root-includes)
                           (:targets ((:and :x86-64 :linux) "x86_64-pc-linux-gnu")
                                     ((:and :aarch64 :android) "aarch64-linux-android")
-                                    ((:and :x86-64 :windows) "x86_64-pc-windows-gnu"))
+                                    ((:and :x86-64 :windows) "x86_64-w64-mingw32"))
                           (:persistent t :depends-on (:claw-utils))
                           (:language :c++)
-                          (:include-sources "core/SkCanvas.h"
-                                            "core/SkSurface.h"
-                                            "core/SkColor.h"
-                                            "core/SkRect.h"
-                                            "core/SkPaint.h"
-                                            "core/SkPoint.h"
-
-                                            "core/SkSurfaceProps.h"
+                          (:include-sources "core/Sk.*\\.h$"
 
                                             "gpu/GrBackendSurface.h"
                                             "gpu/GrDirectContext.h"
@@ -47,21 +41,34 @@
                                             "gpu/gl/GrGLTypes.h")
                           (:include-definitions "^sk_sp"
                                                 "^SK_" "^GR_")
-                          (:exclude-definitions "__va_list_tag"
-                                                "SkFunctionWrapper"
+                          (:exclude-definitions "SkFunctionWrapper"
                                                 "SkWStream"
                                                 "SkBaseDevice"
                                                 "GrContextThreadSafeProxy"
                                                 "GrGLFunction"
                                                 "GrDirectContext::DirectContextID::Next"
+                                                "GrGLTextureParameters"
                                                 "Mock"
-                                                "unique_ptr"
+                                                "SkImageInfo::validate"
+                                                "SkBitmap::validate"
+                                                "SkBitmap::HeapAllocator"
+                                                "SkUnPreMultiply"
+                                                "LocalizedString"
+                                                "SkDeferredDisplayList::ProgramIterator"
+                                                "GrDirectContext::performDeferredCleanup"
+                                                "SkImage::MakeBackendTextureFromSkImage"
+
+                                                "skstd::"
                                                 "::priv$"
                                                 "array.*::"
                                                 "sk_sp.*::element_type"
                                                 "^Sk.*_DEFINED"
                                                 "^Gr.*_DEFINED"
-                                                "::_"))
+
+                                                "__va_list_tag"
+                                                "unique_ptr"
+                                                "::_")
+                          #++(:exclude-sources "private/.*\\.h$"))
   :in-package :%skia
   :trim-enum-prefix t
   :recognize-bitfields t

@@ -13,6 +13,8 @@
       (claw.resect:ignore-not
        (claw.resect:ignore-names
          "sk_sp<SkColorSpace>"
+         "sk_sp<SkData>"
+         "sk_sp<SkTypeface>"
          "sk_sp<.*>::get")))
     ;; this template is unexposed for some reason
     (claw.resect:ignore-names "^SkRGBA4f::")

@@ -33,12 +33,10 @@ jobs:
           path: |
             ${{ github.workspace }}/src/lib/skia/thrid_party/
       - name: Install Required Packages
-        run: sudo apt-get update && sudo apt-get install -y ninja-build libgl1-mesa-dev libgl1-mesa-glx patchelf
+        run: sudo apt-get update && sudo apt-get install -y ninja-build libgl1-mesa-dev libgl1-mesa-glx
       - name: Build Binaries
         run: |
           cd ${{ github.workspace }}/src/lib/ && ./build.sh desktop
-      - name: Set libskia RPATH
-        run: patchelf --set-rpath '${ORIGIN}' src/lib/build/desktop/libskia.so
       - name: Publish Binaries
         uses: softprops/action-gh-release@v1
         env:
@@ -46,7 +44,6 @@ jobs:
         with:
           files: |
             src/lib/build/desktop/libskia.clawed.so
-            src/lib/build/desktop/libskia.so
   build-windows:
     runs-on: windows-2019
     steps:
@@ -68,4 +65,3 @@ jobs:
         with:
           files: |
             src/lib/build/desktop/skia.clawed.dll
-            src/lib/build/desktop/skia.dll
