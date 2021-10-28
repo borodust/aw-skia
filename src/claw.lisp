@@ -58,6 +58,12 @@
                                                 "GrDirectContext::performDeferredCleanup"
                                                 "SkImage::MakeBackendTextureFromSkImage"
 
+                                                "SkStringPrintf"
+                                                "SkDebugf"
+                                                "SkString::appendf"
+                                                "SkString::prependf"
+                                                "SkString::printf"
+
                                                 "skstd::"
                                                 "::priv$"
                                                 "array.*::"
@@ -67,8 +73,8 @@
 
                                                 "__va_list_tag"
                                                 "unique_ptr"
-                                                "::_")
-                          #++(:exclude-sources "private/.*\\.h$"))
+                                                "::_"
+                                                "_IO_FILE"))
   :in-package :%skia
   :trim-enum-prefix t
   :recognize-bitfields t

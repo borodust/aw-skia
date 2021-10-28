@@ -28,13 +28,39 @@ else()
 endif()
 
 
-set(OpenGL_GL_PREFERENCE LEGACY)
-find_package(OpenGL REQUIRED)
+if (NOT ANDROID_ABI)
+  set(OpenGL_GL_PREFERENCE LEGACY)
+  find_package(OpenGL REQUIRED)
 
-if (OPENGL_FOUND)
+  if (OPENGL_FOUND)
     message("OpenGL found: ${OPENGL_LIBRARIES}")
-else ()
+  else ()
     message(ERROR "OpenGL not found")
+  endif()
+else()
+  find_path(GLES3_INCLUDE_DIR GLES3/gl3.h
+    HINTS ${ANDROID_NDK})
+  find_library(GLES3_LIBRARY libGLESv3.so
+    HINTS ${GLES3_INCLUDE_DIR}/../lib)
+
+  if (GLES3_LIBRARY)
+    message("OpenGL ES 3 found: ${GLES3_LIBRARY}")
+  else ()
+    message(ERROR "OpenGL ES 3 not found")
+  endif()
+
+  find_path(EGL_INCLUDE_DIR EGL/egl.h
+    HINTS ${ANDROID_NDK})
+  find_library(EGL_LIBRARY libEGL.so
+    HINTS ${EGL_INCLUDE_DIR}/../lib)
+
+  if (EGL_LIBRARY)
+    message("EGL found: ${EGL_LIBRARY}")
+  else ()
+    message(ERROR "EGL not found")
+  endif()
+
+  find_library(ANDROID_LOG_LIB log)
 endif()
 
 
@@ -58,6 +84,8 @@ target_link_directories(${TARGET}
 
 if(WIN32)
   target_link_libraries(${TARGET} PRIVATE skia.lib OpenGL::GL)
+elseif(ANDROID_ABI)
+  target_link_libraries(${TARGET} PRIVATE skia ${EGL_LIBRARY} ${GLES3_LIBRARY} ${ANDROID_LOG_LIB})
 else()
   target_link_libraries(${TARGET} PRIVATE skia OpenGL::GL OpenGL::GLX)
 endif()
