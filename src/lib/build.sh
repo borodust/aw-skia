@@ -67,7 +67,7 @@ function build_android {
        skia_use_x11=false
        skia_use_lua=false
        skia_use_piex=false
-       skia_use_zlib=true
+       skia_use_zlib=false
        skia_use_system_zlib=false
        skia_use_system_icu=false
        skia_enable_tools=false
@@ -85,8 +85,8 @@ function build_android {
        skia_use_libheif=false
        skia_use_libjpeg_turbo_decode=false
        skia_use_libjpeg_turbo_encode=false
-       skia_use_libpng_decode=true
-       skia_use_libpng_encode=true
+       skia_use_libpng_decode=false
+       skia_use_libpng_encode=false
        skia_use_system_libpng=false
        skia_use_libwebp_decode=false
        skia_use_libwebp_encode=false
@@ -118,7 +118,7 @@ function build_desktop {
        skia_use_x11=true
        skia_use_lua=false
        skia_use_piex=false
-       skia_use_zlib=true
+       skia_use_zlib=false
        skia_use_system_zlib=false
        skia_use_system_icu=false
        skia_enable_tools=false
@@ -136,8 +136,8 @@ function build_desktop {
        skia_use_libheif=false
        skia_use_libjpeg_turbo_decode=false
        skia_use_libjpeg_turbo_encode=false
-       skia_use_libpng_decode=true
-       skia_use_libpng_encode=true
+       skia_use_libpng_decode=false
+       skia_use_libpng_encode=false
        skia_use_system_libpng=false
        skia_use_libwebp_decode=false
        skia_use_libwebp_encode=false
