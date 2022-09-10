@@ -22,6 +22,7 @@
                                     "core/SkImage.h"
                                     "core/SkBitmap.h"
                                     "core/SkBlender.h"
+                                    "core/SkCapabilities.h"
 
                                     "gpu/GrBackendSurface.h"
                                     "gpu/GrDirectContext.h"
@@ -33,6 +34,7 @@
                                     ((:and :x86-64 :windows) "x86_64-w64-mingw32"))
                           (:persistent t :depends-on (:claw-utils))
                           (:language :c++)
+                          (:standard :c++17)
                           (:include-sources "core/Sk.*\\.h$"
 
                                             "gpu/GrBackendSurface.h"
@@ -64,6 +66,8 @@
                                                 "SkString::prependf"
                                                 "SkString::printf"
 
+                                                "AutoLayerForImageFilter"
+
                                                 "skstd::"
                                                 "::priv$"
                                                 "array.*::"
@@ -71,10 +75,12 @@
                                                 "^Sk.*_DEFINED"
                                                 "^Gr.*_DEFINED"
 
-                                                "__va_list_tag"
                                                 "unique_ptr"
                                                 "::_"
-                                                "_IO_FILE"))
+                                                "__"
+                                                "^_"
+                                                "_IO_FILE"
+                                                "std::basic_string"))
   :in-package :%skia
   :trim-enum-prefix t
   :recognize-bitfields t

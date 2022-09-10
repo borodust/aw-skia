@@ -71,6 +71,7 @@ set(TARGET skia.clawed)
 set(ADAPTER "adapter.${TARGET_TRIPLE}.cxx")
 
 add_library(${TARGET} SHARED ${ADAPTER})
+set_property(TARGET ${TARGET} PROPERTY CXX_STANDARD 17)
 
 set_source_files_properties(${ADAPTER} PROPERTIES LANGUAGE CXX)
 
