@@ -64,7 +64,7 @@ jobs:
         id: vars
         run: >-
           export RELEASE_VERSION=${GITHUB_REF#refs/*/} &&
-          echo ::set-output name=runtime_binary::libskia.clawed-windows-x64-$RELEASE_VERSION.dll
+          echo ::set-output name=runtime_binary::skia.clawed-windows-x64-$RELEASE_VERSION.dll
         shell: bash
       - name: Install Ninja
         uses: seanmiddleditch/gha-setup-ninja@v3
