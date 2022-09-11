@@ -1,3 +1,4 @@
-# claw-skia
+# aw-skia
 
-Work in progress playground for `:claw` `C++` generator.
+Thin Common Lisp bindings to [`Skia`](https://skia.org/) 2D graphics library for
+`alien-works`.
