@@ -48,7 +48,7 @@
                                                 "SkBaseDevice"
                                                 "GrContextThreadSafeProxy"
                                                 "GrGLFunction"
-                                                "GrDirectContext::DirectContextID::Next"
+                                                "GrDirectContext::DirectContextID"
                                                 "GrGLTextureParameters"
                                                 "Mock"
                                                 "SkImageInfo::validate"
