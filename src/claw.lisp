@@ -59,6 +59,8 @@
                                                 "SkDeferredDisplayList::ProgramIterator"
                                                 "GrDirectContext::performDeferredCleanup"
                                                 "SkImage::MakeBackendTextureFromSkImage"
+                                                "SkRefCnt::.*"
+                                                "SkNVRefCnt::.*"
 
                                                 "SkStringPrintf"
                                                 "SkDebugf"
