@@ -2,7 +2,9 @@ param (
     [parameter(Mandatory=$false)]
     [int] $BuildThreadCount=0,
     [parameter(Mandatory=$false)]
-    [String] $BuildType="MinSizeRel"
+    [String] $BuildType="MinSizeRel",
+    [parameter(Mandatory=$false)]
+    [String] $ClangDirectory=""
 )
 
 ### CONFIGURATION START ###
@@ -24,18 +26,25 @@ $BuildDir = "$WorkDir/build/desktop/"
 
 $LibraryDir = "$WorkDir/skia/"
 
+if ( $BuildType -eq "Debug" ) {
+    $SkiaIsReleaseBuild="false"
+} else {
+    $SkiaIsReleaseBuild="true"
+}
+
+$GnArgs = "is_official_build=$SkiaIsReleaseBuild`n"
+
+if ( $ClangDirectory -eq "" ) {
+    $ClangDirectory = "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/x64"
+}
+
+$GnArgs += "clang_win=\`"$ClangDirectory\`"`n"
+
 ### CONFIGURATION END ###
 
 pushd $LibraryDir
 
-if ( $BuildType -eq "Debug" ) {
-    $GnArgs = "is_official_build=false`n"
-} else {
-    $GnArgs = "is_official_build=true`n"
-}
-
 $GnArgs += @'
-clang_win=\"C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/x64\"
 cc=\"clang\"
 cxx=\"clang++\"
 extra_cflags=[\"-Wno-invalid-offsetof\"]

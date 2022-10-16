@@ -71,7 +71,7 @@ jobs:
       - name: Build Binaries
         run: |
           cd ${{ github.workspace }}/src/lib/
-          ./build.ps1
+          ./build.ps1 -ClangDirectory 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Tools/Llvm/x64'
       - name: Rename Binaries
         run: >-
           mv src/lib/build/desktop/skia.clawed.dll ${{ steps.vars.outputs.runtime_binary }}
