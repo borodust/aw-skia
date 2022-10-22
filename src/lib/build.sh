@@ -157,7 +157,7 @@ function build_desktop {
 
 
 cd $LIBRARY_DIR
-python2 tools/git-sync-deps
+python3 tools/git-sync-deps
 
 case "$REST_ARGS" in
     desktop)
