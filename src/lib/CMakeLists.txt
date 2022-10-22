@@ -9,10 +9,16 @@ set(CMAKE_LINK_WHAT_YOU_USE ON)
 set(CMAKE_SKIP_BUILD_RPATH FALSE)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 set(CMAKE_INSTALL_RPATH "$\{ORIGIN\}")
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
 if (WIN32)
     set(TARGET_TRIPLE x86_64-w64-mingw32)
+
+    if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+      set(CMAKE_MSVC_RUNTIME_LIBRARY MultiThreadedDebug)
+    elseif()
+      set(CMAKE_MSVC_RUNTIME_LIBRARY MultiThreaded)
+    endif()
+
     if (NOT ANDROID_ABI)
       add_compile_options(/arch:AVX)
     endif()

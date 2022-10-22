@@ -28,11 +28,14 @@ $LibraryDir = "$WorkDir/skia/"
 
 if ( $BuildType -eq "Debug" ) {
     $SkiaIsReleaseBuild="false"
+    $SkiaExtraCFlags='[\"-Wno-invalid-offsetof\", \"-MDd\"]'
 } else {
     $SkiaIsReleaseBuild="true"
+    $SkiaExtraCFlags='[\"-Wno-invalid-offsetof\", \"-MD\"]'
 }
 
 $GnArgs = "is_official_build=$SkiaIsReleaseBuild`n"
+$GnArgs = "extra_cflags=$SkiaExtraCFlags`n"
 
 if ( $ClangDirectory -eq "" ) {
     $ClangDirectory = "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/x64"
@@ -47,7 +50,6 @@ pushd $LibraryDir
 $GnArgs += @'
 cc=\"clang\"
 cxx=\"clang++\"
-extra_cflags=[\"-Wno-invalid-offsetof\"]
 is_component_build=false
 skia_use_gl=true
 skia_use_vulkan=false
