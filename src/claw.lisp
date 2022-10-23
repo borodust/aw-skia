@@ -23,8 +23,12 @@
                                     "core/SkBitmap.h"
                                     "core/SkBlender.h"
                                     "core/SkCapabilities.h"
+                                    "core/SkData.h"
+                                    "core/SkTypeface.h"
+                                    "core/SkString.h"
 
                                     "gpu/GrBackendSurface.h"
+                                    "gpu/GrRecordingContext.h"
                                     "gpu/GrDirectContext.h"
                                     "gpu/gl/GrGLInterface.h"
                                     "gpu/gl/GrGLTypes.h")
@@ -35,14 +39,9 @@
                           (:persistent t :depends-on (:claw-utils))
                           (:language :c++)
                           (:standard :c++17)
-                          (:include-sources "core/Sk.*\\.h$"
-
-                                            "gpu/GrBackendSurface.h"
-                                            "gpu/GrDirectContext.h"
-                                            "gpu/gl/GrGLInterface.h"
-                                            "gpu/gl/GrGLTypes.h")
                           (:include-definitions "^sk_sp"
-                                                "^SK_" "^GR_")
+                                                "^SK_" "^GR_"
+                                                "^Sk" "^Gr")
                           (:exclude-definitions "SkFunctionWrapper"
                                                 "SkWStream"
                                                 "SkBaseDevice"
@@ -60,7 +59,9 @@
                                                 "GrDirectContext::performDeferredCleanup"
                                                 "SkImage::MakeBackendTextureFromSkImage"
                                                 "SkRefCnt::.*"
+                                                "SkWeakRefCnt::.*"
                                                 "SkNVRefCnt::.*"
+                                                "^SkTArray"
 
                                                 "SkStringPrintf"
                                                 "SkDebugf"

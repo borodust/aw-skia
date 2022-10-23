@@ -37,4 +37,10 @@
       (:in-class "GrBackendFormat"
                  ("toStr"))
       (:in-class "SkCanvas"
+                 (:ctor :any))
+      (:in-class "GrRecordingContext"
+                 (:ctor :any))
+      (:in-class "GrContext_Base"
+                 (:ctor :any))
+      (:in-class "GrImageContext"
                  (:ctor :any)))))
