@@ -5,7 +5,7 @@ on:
       - "v*.*.*"
 jobs:
   build-linux:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Check Out Everything
         id: checkout
@@ -83,7 +83,7 @@ jobs:
           files: |
             ${{ steps.vars.outputs.runtime_binary }}
   build-android:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Check Out Everything
         id: checkout
